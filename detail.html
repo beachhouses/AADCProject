@@ -112,19 +112,22 @@
     });
   </script>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 
   <!-- SCROLL TO SEARCH BUTTON -->
-  <script>
-    document.querySelector(".nav-search-btn").addEventListener("click", (e) => {
-      e.preventDefault();
-      const section = document.getElementById("searchSection");
-      if (section) section.scrollIntoView({ behavior: "smooth" });
+<script>
+const navSearchBtn = document.querySelector(".nav-search-btn");
+if (navSearchBtn) {
+  navSearchBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const section = document.getElementById("searchSection");
+    if (section) section.scrollIntoView({ behavior: "smooth" });
 
-      const input = document.getElementById("searchInput");
-      if (input) setTimeout(() => input.focus(), 800);
-    });
-  </script>
+    const input = document.getElementById("searchInput");
+    if (input) setTimeout(() => input.focus(), 800);
+  });
+}
+</script>
 
   <!-- SCROLL REVEAL ANIMATION -->
   <script>
@@ -156,5 +159,44 @@
     }, 1000);
   });
   </script>
+
+  <!-- ===== SMOOTH SCROLL & FADE ANIMATION ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Smooth scroll behavior for all internal anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+      const targetId = this.getAttribute("href");
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+
+  // Fade + slide-up animation for visible sections
+  const revealElements = document.querySelectorAll(
+    ".detail-header, .detail-schedule, .detail-bottom-cta, .footer"
+  );
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("fade-in-active");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  revealElements.forEach(el => {
+    el.classList.add("fade-in-init");
+    observer.observe(el);
+  });
+});
+</script>
 </body>
 </html>
