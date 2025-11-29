@@ -2029,3 +2029,16 @@ body::after {
 .movie-trailer-hint:hover {
   background: rgba(0, 0, 0, 0.5);
 }
+
+/* ===== FADE-IN + SLIDE-UP ANIMATION ===== */
+.fade-in-init {
+  opacity: 0;
+  transform: translateY(60px);
+  filter: blur(6px);
+  transition: opacity 1s ease, transform 1s ease, filter 1s ease;
+}
+.fade-in-active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
