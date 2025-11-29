@@ -1876,7 +1876,7 @@ body::after {
   filter: blur(0);
 }
 
-/* ===== Scroll Reveal efek lembut (global) ===== */
+/* Scroll Reveal */
 .reveal {
   opacity: 0;
   transform: translateY(60px) scale(0.98);
@@ -1888,4 +1888,144 @@ body::after {
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0);
+}
+
+.movie-extra {
+  margin-top: 40px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  color: #fdf6e3;
+}
+
+.movie-extra-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #fefce8;
+  text-align: left;
+}
+
+.movie-synopsis p {
+  margin: 8px 0;
+  line-height: 1.6;
+  color: #fefae0;
+}
+
+.movie-date-info {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  color: #e6e6e6;
+}
+
+.wiki-source {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #cfcfcf;
+}
+
+
+/* buat link eksternal muncul di luar kotak */
+.movie-external-link {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.movie-external-link a {
+  display: inline-block;
+  background: rgba(20, 20, 20, 0.8);
+  color: #fefce8;
+  font-weight: 600;
+  text-decoration: underline;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.movie-external-link a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ======= TRAILER PREVIEW - REFINED ======= */
+
+.movie-trailer-frame {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 32px auto;
+  gap: 16px;
+}
+
+.movie-trailer-thumb {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  aspect-ratio: 16/9;
+  border-radius: 24px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  filter: brightness(0.9) contrast(1.05);
+}
+
+.movie-trailer-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.55)
+  );
+  z-index: 1;
+}
+
+.movie-trailer-thumb::after {
+  content: "▶";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 78px;
+  color: #fff8dc;
+  text-shadow: 0 0 24px rgba(0, 0, 0, 0.9);
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 2;
+}
+
+.movie-trailer-thumb:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+  filter: brightness(1) contrast(1.1);
+}
+
+.movie-trailer-thumb:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.movie-trailer-hint {
+  font-size: 0.95rem;
+  color: #fefce8;
+  opacity: 0.9;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 8px 16px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  letter-spacing: 0.4px;
+  max-width: 400px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+.movie-trailer-hint:hover {
+  background: rgba(0, 0, 0, 0.5);
 }
